@@ -1,0 +1,28 @@
+- What is a DB
+  - Topography:
+    - Schema
+    - Tables
+      - Primary Key
+        - You choose
+        - DB chooses
+        - Composite
+      - Naming (plural)
+      - Columns
+        - Naming (id vs tablename_id)
+        - Types
+      - Normalization
+  - SQL
+    - Transactions
+  - Indexes
+    - Gist
+    - Btree
+- Different Implementations
+  - SQLite
+  - MySQL
+  - PostgreSQL
+  - ORACLE (proprietary)
+- Advanced Topics:
+  - Migrations
+  - Master/Slave
+    - Replication
+  - Sharding
