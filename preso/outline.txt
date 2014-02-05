@@ -16,11 +16,14 @@
   - Indexes
     - Gist
     - Btree
-- Different Implementations
+- Different Implementations of an RDBMs
   - SQLite
   - MySQL
   - PostgreSQL
   - ORACLE (proprietary)
+- Fancy new NoSQL
+  - Good for
+  - Not good for
 - Advanced Topics:
   - Migrations
   - Master/Slave
