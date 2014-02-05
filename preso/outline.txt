@@ -8,19 +8,37 @@
         - Composite
       - Naming (plural)
       - Columns
-        - Naming (id vs tablename_id)
+        - Naming
+          - singular
+          - id vs tablename_id
         - Types
+          - Why JSON blobs are bad m'kay
       - Normalization
+        - Why it's good.
+        - When it's ok to fudge
   - SQL
-    - Transactions
+    - CREATE
+    - INSERT
+    - UPDATE
+    - DELETE
+    - SELECT
+  - Transactions
+    - Atomicity
+    - Rollbacks
   - Indexes
-    - Gist
+    - What?
+    - Why?
+    - Gist/Gin (Postgres)
     - Btree
 - Different Implementations of an RDBMs
   - SQLite
+    - Single file (bottleneck)
+    - Perfectly fine for local
   - MySQL
   - PostgreSQL
+    - Postgis/Geo-spatial
   - ORACLE (proprietary)
+    - Not even once. JJ, but really, why?
 - Fancy new NoSQL
   - Good for
   - Not good for
@@ -28,4 +46,6 @@
   - Migrations
   - Master/Slave
     - Replication
+    - Readonly/Readwrite
   - Sharding
+  - Backups
