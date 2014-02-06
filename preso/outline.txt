@@ -25,11 +25,6 @@
   - Transactions
     - Atomicity
     - Rollbacks
-  - Indexes
-    - What?
-    - Why?
-    - Gist/Gin (Postgres)
-    - Btree
 - Different Implementations of an RDBMs
   - SQLite
     - Single file (bottleneck)
@@ -43,6 +38,13 @@
   - Good for
   - Not good for
 - Advanced Topics:
+  - Performance
+    - EXPLAIN
+    - Indexes
+      - What?
+      - Why?
+      - Gist/Gin (Postgres)
+      - Btree
   - Migrations
   - Master/Slave
     - Replication
