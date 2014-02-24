@@ -1,0 +1,6 @@
+.DS_Store
+orm/env/
+*/env/
+colors.db
+*/*.egg*
+*.pyc
