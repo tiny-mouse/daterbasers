@@ -1,4 +1,6 @@
-# Setup (just run the following commands from this directory)
+# Setup 
+
+Just run the following commands from this directory wherever you've checked out the repo.
 
 ```
 pip install virtualenv
