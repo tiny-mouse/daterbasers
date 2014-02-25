@@ -1,7 +1,14 @@
+database:
+  sqlalchemy.url: "sqlite:///colors.db"
 debug:
   enabled: True
   server:
     host: "127.0.0.1"
     port: 8000
+flask:
+  init:
+    import_name: "playtime"
+    # Relative paths for templates are a bad idea for prod
+    template_folder: "../playtime/templates/"
 views:
   - playtime.views.items

@@ -2,6 +2,7 @@ from __future__ import with_statement
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
+from clay import config as clay_config
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -34,7 +35,8 @@ def run_migrations_offline():
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
+    # This is special to Clay
+    url = clay_config.get("database")['sqlalchemy.url']
     context.configure(url=url)
 
     with context.begin_transaction():
@@ -47,9 +49,10 @@ def run_migrations_online():
     and associate a connection with the context.
 
     """
+    # This is special to Clay
+    db_config = clay_config.get("database")
     engine = engine_from_config(
-                config.get_section(config.config_ini_section),
-                prefix='sqlalchemy.',
+                db_config,
                 poolclass=pool.NullPool)
 
     connection = engine.connect()
