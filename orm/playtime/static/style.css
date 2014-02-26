@@ -1,5 +1,13 @@
-body {
+.black_bg {
     background-color: #000000;
+}
+
+.white_bg {
+    background-color: #FFFFFF;
+}
+
+.gray_bg {
+    background-color: #A6A6A6;
 }
 
 .item-title {

@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from clay import app
+from clay import app, config
 from flask import redirect, render_template, request
 
 #from playtime.util.data import ITEMS
@@ -11,6 +11,8 @@ from playtime.models.hex_color import HexColor
 from playtime.models.item_type import ItemType
 from playtime.models.storage_location import StorageLocation
 
+bg_color = config.get('bg_color', 'white')
+
 @app.route('/', methods=['GET'])
 def items():
     #all_items = ITEMS
@@ -18,14 +20,16 @@ def items():
     #all_items = db_session.query(Item).all()
     # Uncomment to use the db and sort items.
     all_items = db_session.query(Item).order_by(Item.name).all()
-    return render_template('items.html', items=all_items)
+    return render_template('items.html', items=all_items, bg_color=bg_color)
 
 @app.route('/new', methods=['GET'])
 def create_item_form():
     colors = db_session.query(HexColor).order_by(HexColor.hex_value).all()
     locations = db_session.query(StorageLocation).order_by(StorageLocation.name).all()
     types = db_session.query(ItemType).order_by(ItemType.name).all()
-    return render_template('create_item.html', hex_colors=colors, locations=locations, types=types)
+    return render_template(
+        'create_item.html', hex_colors=colors, locations=locations,
+        types=types, bg_color=bg_color)
 
 @app.route('/items/create', methods=['POST'])
 def create_item():
