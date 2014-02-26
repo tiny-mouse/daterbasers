@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <form id="create-item-form" role="form" method="post" action="/items/create">
+        <div class="form-group">
+            <label for="name">Item Name</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Enter item name">
+            <label for="item_type">What kind of thing is it?</label>
+            <select name="type_id" class="form-control">
+                {% for item_type in types %}
+                <option name="type_id" value="{{ item_type.id }}">{{ item_type.name }}</option>
+                {% endfor %}
+            </select>
+            <label for="hex_color">What color is it?</label>
+            <select name="hex_id" class="form-control">
+                {% for color in hex_colors %}
+                <option name="hex_id" value="{{ color.id }}">{{ color.color_family.name }} #{{ color.hex_value }}</option>
+                {% endfor %}
+            </select>
+            <label for="storage_location">Where Is It Stored?</label>
+            <select name="location_id" class="form-control">
+                {% for location in locations %}
+                <option name="location_id" value="{{ location.id }}">{{ location.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+{% endblock %}

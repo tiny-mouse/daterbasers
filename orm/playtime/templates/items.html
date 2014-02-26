@@ -1,5 +1,16 @@
-<ul>
-{% for item in items %}
-<li style="color:#{{item.hex_color.hex_value}}">{{item.name}}</li>
-{% endfor %}
-</ul>
+{% extends "base.html" %}
+{% block content %}
+    <div class="container-fluid center">
+        <div class="row">
+            {% for item in items %}
+                <div class="col-md-3 col-md-offset-1">
+                    <div style="width:130px; height:130px; background-color:#{{item.hex_color.hex_value}}">
+                        <img src="{{ url_for('static', filename='images/{0}.png'.format(item.item_type.name)) }}">
+                        </img>
+                    </div>
+                    <span class="item-title">{{item.name}}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -103,6 +103,7 @@ def upgrade():
     colors = db_session.query(HexColor).all()
     storage_locations = db_session.query(StorageLocation).all()
 
+    '''
     items = []
     for i in range(1000):
         # Pick a random type
@@ -123,6 +124,7 @@ def upgrade():
 
         })
     op.bulk_insert(items_table, items)
+    '''
 
 
 def downgrade():

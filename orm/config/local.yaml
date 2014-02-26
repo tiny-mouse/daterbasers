@@ -8,7 +8,8 @@ debug:
 flask:
   init:
     import_name: "playtime"
-    # Relative paths for templates are a bad idea for prod
+    # Relative paths for anything is a bad idea for prod
     template_folder: "../playtime/templates/"
+    static_folder: "../playtime/static"
 views:
   - playtime.views.items
