@@ -37,7 +37,8 @@
     vertical-align: middle;
 }
 
-a:link {
+a {
+    color: #000;
     text-decoration:none;
 }
 
@@ -46,9 +47,9 @@ a:visited {
 }
 
 a:hover {
-    text-decoration:underline;
+    text-decoration:none;
 }
 
 a:active {
-    text-decoration:underline;
+    text-decoration:none;
 }
