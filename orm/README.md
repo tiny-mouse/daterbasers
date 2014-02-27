@@ -5,13 +5,9 @@ Then they install all the project requirements and set up the db.
 
 ```
 pip install virtualenv
-
 mkdir env
-
 virtualenv env
-
 source env/bin/activate
-
 pip install -r requirements.txt
 CLAY_CONFIG=config/local.yaml alembic upgrade head
 ```
