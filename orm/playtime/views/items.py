@@ -3,8 +3,7 @@ from __future__ import absolute_import
 from clay import app, config
 from flask import redirect, render_template, request
 
-#from playtime.util.data import ITEMS
-# Uncomment to use the db
+from playtime.util.data import ITEMS
 from playtime.models import db_session
 from playtime.models.item import Item
 from playtime.models.hex_color import HexColor
@@ -15,12 +14,14 @@ bg_color = config.get('bg_color', 'white')
 
 @app.route('/', methods=['GET'])
 def items():
-    #all_items = ITEMS
+    # Uncomment to use static data
+    all_items = ITEMS
+    return render_template('static_items.html', items=all_items, bg_color=bg_color)
     # Uncomment to use the db
-    #all_items = db_session.query(Item).all()
+    all_items = db_session.query(Item).all()
     # Uncomment to use the db and sort items.
-    all_items = db_session.query(Item).order_by(Item.name).all()
-    return render_template('items.html', items=all_items, bg_color=bg_color)
+    #all_items = db_session.query(Item).order_by(Item.name).all()
+    #return render_template('items.html', items=all_items, bg_color=bg_color)
 
 @app.route('/new', methods=['GET'])
 def create_item_form():
