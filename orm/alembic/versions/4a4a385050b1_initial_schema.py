@@ -32,7 +32,7 @@ ALL_COLORS = {
 }
 
 ALL_TYPES = [ "books", "shirts", "pants", "shoes", "bags", "dishes", "electronics" ]
-STORAGE_LOCATIONS = [ "kitchen", "living room", "den", "office", "bathroom", "room" ]
+STORAGE_LOCATIONS = [ "kitchen", "living room", "den", "office", "bathroom", "bedroom" ]
 
 def get_rando_name():
     names = ["my", "joe", "jane", "jesse", "bob", "mom", "brophia", "nicola", "marfa"]
@@ -99,32 +99,94 @@ def upgrade():
     type_rows = [{'name':value} for value in ALL_TYPES]
     op.bulk_insert(item_types_table, type_rows)
 
-    item_types = db_session.query(ItemType).all()
     colors = db_session.query(HexColor).all()
-    storage_locations = db_session.query(StorageLocation).all()
 
-    '''
-    items = []
-    for i in range(1000):
-        # Pick a random type
-        item_type = random.choice(item_types)
-        # Pick a random hex color
-        hexvalue = random.choice(colors)
-        # Pick a random storage location
-        storage_location = random.choice(storage_locations)
-        #Add it
-        hexcolor = db_session.query(HexColor).filter(
-            HexColor.hex_value == hexvalue.hex_value).first()
-        item_name = get_rando_name()
-        items.append({
-            'name': item_name,
-            'item_type_id':item_type.id,
-            'hex_color_id':hexcolor.id,
-            'storage_location_id':storage_location.id,
+    living_room = db_session.query(StorageLocation).filter(StorageLocation.name == 'living room').first()
+    bedroom = db_session.query(StorageLocation).filter(StorageLocation.name == 'bedroom').first()
+    kitchen = db_session.query(StorageLocation).filter(StorageLocation.name == 'kitchen').first()
 
-        })
+    pants = db_session.query(ItemType).filter(ItemType.name == 'pants').first()
+    shirts = db_session.query(ItemType).filter(ItemType.name == 'shirts').first()
+    shoes = db_session.query(ItemType).filter(ItemType.name == 'shoes').first()
+    bags = db_session.query(ItemType).filter(ItemType.name == 'bags').first()
+    dishes = db_session.query(ItemType).filter(ItemType.name == 'dishes').first()
+    electronics = db_session.query(ItemType).filter(ItemType.name == 'electronics').first()
+
+    items = [
+        {
+            'name': 'My Controller',
+            'item_type_id':electronics.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':living_room.id,
+        },
+        {
+            'name': "Evan's Controller",
+            'item_type_id':electronics.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':living_room.id,
+        },
+        {
+            'name': "Brophia's Favorite Tank",
+            'item_type_id':shirts.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':bedroom.id,
+        },
+        {
+            'name': "Nicola's New Sweatshirt",
+            'item_type_id':shirts.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':living_room.id,
+        },
+        {
+            'name': "Sweeney's Cuffed Jeans",
+            'item_type_id':pants.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':bedroom.id,
+        },
+        {
+            'name': "Jesse's Fancy Pants",
+            'item_type_id':pants.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':living_room.id,
+        },
+        {
+            'name': "Mom's Giant Mug",
+            'item_type_id':dishes.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':kitchen.id,
+        },
+        {
+            'name': "My Pasta Bowl",
+            'item_type_id':dishes.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':kitchen.id,
+        },
+        {
+            'name': "My Motorcycle Boots",
+            'item_type_id':shoes.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':bedroom.id,
+        },
+        {
+            'name': "Martha's Flats",
+            'item_type_id':shoes.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':bedroom.id,
+        },
+        {
+            'name': "My Work Bag",
+            'item_type_id':bags.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':living_room.id,
+        },
+        {
+            'name': "Bro's Backpack",
+            'item_type_id':bags.id,
+            'hex_color_id':random.choice(colors).id,
+            'storage_location_id':bedroom.id,
+        },
+    ]
     op.bulk_insert(items_table, items)
-    '''
 
 
 def downgrade():
